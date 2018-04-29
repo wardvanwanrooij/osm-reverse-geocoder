@@ -8,8 +8,8 @@ Latest version at https://github.com/wardvanwanrooij/osm-reverse-geocoder
 It takes about 0.2sec to reverse geocode a coordinate on my VPS (uncached, after reboot). You can benchmark your own installation with the included script by reverse geocoding 500 random (though fixed) coordinates in Europe. 
 
 	export DBI_DSN="DBI:Pg:dbname=osm;host=127.0.0.1"
-	export DBI_PASS="osm"
-	export DBI_USER="***yourpassword***"
+	export DBI_USER="osm"
+	export DBI_PASS="***yourpassword***"
 	perl benchmark.pl
 	(...)
 	took 98 seconds to process 500 coordinates, 0.20 sec/coordinate
