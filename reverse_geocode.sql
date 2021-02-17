@@ -25,7 +25,7 @@ BEGIN
 		END IF;
 	END IF;
 	FOR rec IN
-		SELECT * FROM (SELECT regexp_replace(admin_level, E'\\D', '', 'g')::SMALLINT AS admin_level, name, tags FROM planet_osm_polygon WHERE ST_Within(loc, way) AND admin_level IS NOT NULL AND name IS NOT NULL) AS s ORDER BY admin_level LIMIT 100
+		SELECT * FROM (SELECT regexp_replace(admin_level, E'\\D', '', 'g')::SMALLINT AS admin_level, name, tags FROM planet_osm_polygon WHERE ST_Intersects(way, loc) AND admin_level IS NOT NULL AND name IS NOT NULL AND boundary='administrative') AS s ORDER BY admin_level LIMIT 100
 	LOOP
 		IF (rec.admin_level = 2) THEN
 			country := rec.tags->'name:en';
